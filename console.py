@@ -43,6 +43,20 @@ class HBNBCommand(cmd.Cmd):
                 raise SyntaxError()
             my_list = line.split(" ")
             obj = eval("{}()".format(my_list[0]))
+            """---do_create update---"""
+            parameters = my_list[1:]
+            for arg in parameters:
+                if "=" in arg:
+                    arg_split = arg.split("=")
+                    if arg_split[1][0] == "\"":
+                        arg_split[1] = arg_split[1][1:-1]
+                        arg_split[1] = arg_split[1].replace("_", " ").replace(
+                            '"', '\\"')
+                    elif arg_split[1].isdigit():
+                        arg_split[1] = int(arg_split[1])
+                    else:
+                        arg_split[1] = float(arg_split[1])
+                    setattr(obj, arg_split[0], arg_split[1])
             obj.save()
             print("{}".format(obj.id))
         except SyntaxError:
