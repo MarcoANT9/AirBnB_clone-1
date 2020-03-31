@@ -56,16 +56,8 @@ class FileStorage():
     def delete(self, obj=None):
         """ Deletes an object form the database. """
         if obj is not None:
-            delete = []
-            for key, value in self.__objects.items():
-                if obj.name == value.name:
-                    delete_id = value.id
-                    obj_class_name = (obj.__class__.__name__)
-                    delete.append(obj_class_name + "." + delete_id)
-            print(delete)
-            if delete:
-                for index in delete:
-                    self.__objects.pop(index)
+            key = "{}.{}".format(type(obj).__name__,obj.id)
+            del self.__objects[key]
 
     """------------------------------------------------------"""
 
