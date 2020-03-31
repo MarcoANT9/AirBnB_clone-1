@@ -55,13 +55,13 @@ class FileStorage():
 
     def delete(self, obj=None):
         if obj is not None:
-            delete=0
+            delete = 0
             for key, value in self.__objects.items():
                 if obj.name == value.name:
                     delete = value.id
 
-            obj_class_name=(obj.__class__.__name__)
-            delete = obj_class_name +"."+ delete
+            obj_class_name = (obj.__class__.__name__)
+            delete = obj_class_name + "." + delete
             print(delete)
             if delete != 0:
                 self.__objects.pop(delete)
