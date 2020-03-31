@@ -12,6 +12,7 @@ from models.place import Place
 from models.review import Review
 import shlex
 
+
 class FileStorage():
     """ This class handels Json files with instances, it has 2 private class
     attributes and 4 public instance methods"""
@@ -51,7 +52,7 @@ class FileStorage():
             select = key.replace(".", " ")
             select = shlex.split(select)
             if select[0] == cls.__name__:
-                ret[key] = self.objects[key]
+                ret[key] = self.__objects[key]
         return ret
 
     """------------------------------------------------------"""
