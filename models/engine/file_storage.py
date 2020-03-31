@@ -56,16 +56,16 @@ class FileStorage():
     def delete(self, obj=None):
         """ Deletes an object form the database. """
         if obj is not None:
-            delete = 0
+            delete = []
             for key, value in self.__objects.items():
                 if obj.name == value.name:
-                    delete = value.id
-
-            obj_class_name = (obj.__class__.__name__)
-            delete = obj_class_name + "." + delete
+                    delete_id = value.id
+                    obj_class_name = (obj.__class__.__name__)
+                    delete.append(obj_class_name + "." + delete_id)
             print(delete)
-            if delete != 0:
-                self.__objects.pop(delete)
+            if delete:
+                for index in delete:
+                    self.__objects.pop(index)
 
     """------------------------------------------------------"""
 
