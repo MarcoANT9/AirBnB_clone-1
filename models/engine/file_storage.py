@@ -42,13 +42,16 @@ class FileStorage():
         Return:
              returns a dictionary of __object
         """
-        if (cls is not None):
+        if (cls is None):
             return self.__objects
 
         ret = {}
-        for key, value in self.__objects.items():
-            if key == cls:
-                ret[key] = value
+        dictt = self.__objects
+        for key in dictt:
+            select = key.replace(".", " ")
+            select = shlex.split(select)
+            if select[0] == cls.__name__:
+                ret[key] = self.objects[key]
         return ret
 
     """------------------------------------------------------"""
