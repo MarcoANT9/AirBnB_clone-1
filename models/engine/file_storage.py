@@ -54,6 +54,7 @@ class FileStorage():
     """------------------------------------------------------"""
 
     def delete(self, obj=None):
+        """ Deletes an object form the database. """
         if obj is not None:
             delete = 0
             for key, value in self.__objects.items():
