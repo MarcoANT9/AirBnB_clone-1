@@ -3,6 +3,7 @@
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String
 
+
 class Amenity(BaseModel, Base):
     """This is the class for Amenity
     Attributes:
@@ -13,5 +14,3 @@ class Amenity(BaseModel, Base):
     name = Column(String(128), nullable=False)
 
     """ ---- CLASS RELATIONSHIPS ----"""
-
-    
