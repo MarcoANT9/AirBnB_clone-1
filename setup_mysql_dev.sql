@@ -4,6 +4,8 @@
 -- "performance_schema".
 
 CREATE DATABASE IF NOT EXISTS hbnb_dev_db;
+DROP USER IF EXISTS 'hbnb_dev'@'localhost';
+FLUSH PRIVILEGES;
 
 CREATE USER IF NOT EXISTS 'hbnb_dev'@'localhost' IDENTIFIED BY 'hbnb_dev_pwd';
 
