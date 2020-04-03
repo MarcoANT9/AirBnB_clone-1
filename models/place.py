@@ -1,9 +1,11 @@
 #!/usr/bin/python3
 """This is the place class"""
 from models.base_model import BaseModel, Base
-from sqlalchemy import Column, Integer, String, ForeignKey, Float
+from sqlalchemy import Column, Integer, String, ForeignKey, Float, Table
 import os
 from sqlalchemy.orm import relationship
+from os import getenv
+
 
 
 class Place(BaseModel, Base):
