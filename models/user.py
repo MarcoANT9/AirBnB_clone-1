@@ -23,4 +23,4 @@ class User(BaseModel, Base):
     """----CLASS RELATIONSHIPS----"""
 
     places = relationship("Place", backref="user",
-                         cascade="all, delete-orphan")
+                          cascade="all, delete-orphan")
