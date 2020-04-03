@@ -10,8 +10,8 @@ from os import getenv
 
 class State(BaseModel, Base):
     """This is the class for State
-    Attributes:
-        name: input name
+            Attributes:
+                name: input name
     """
     __tablename__ = 'states'
 
@@ -24,7 +24,7 @@ class State(BaseModel, Base):
         @property
         def cities(self):
             """Return list of City instances with state_id equal to current
-            State.id
+               State.id
             """
             cities = models.engine.all(City)
             list_cities = []

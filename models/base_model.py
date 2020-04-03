@@ -11,7 +11,7 @@ Base = declarative_base()
 
 class BaseModel:
     """This class will defines all common attributes/methods
-    for other classes
+       for other classes
     """
     id = Column(String(60), unique=True, nullable=False, primary_key=True)
     created_at = Column(DateTime, nullable=False, default=datetime.utcnow())
@@ -34,7 +34,7 @@ class BaseModel:
                 if key != "__class__":
                     setattr(self, key, value)
             if not self.id:
-                self.id = str(uuid.uuid4())
+                setattr(self, 'id', str(uuid.uuid4()))
             if not self.created_at:
                 self.created_at = datetime.now()
             if not self.updated_at:
@@ -45,9 +45,9 @@ class BaseModel:
             models.storage.new(self)
 
     def __str__(self):
-        """returns a string
-        Return:
-            returns a string of class name, id, and dictionary
+        """ Returns a string
+            Return:
+                    A string of class name, id, and dictionary
         """
         my_dict = dict(self.__dict__)
         if '_sa_instance_state' in my_dict.keys():
@@ -64,8 +64,6 @@ class BaseModel:
         """updates the public instance attribute updated_at to current
         """
         self.updated_at = datetime.now()
-        if not self.created_at:
-            self.created_at = self.updated_at
         models.storage.new(self)
         models.storage.save()
 
@@ -82,7 +80,7 @@ class BaseModel:
             del my_dict['_sa_instance_state']
         return my_dict
 
-        def delete(self):
-            """Delete the current instance from storage.
-            """
-            models.storage.delete(self)
+    def delete(self):
+        """Delete the current instance from storage.
+        """
+        models.storage.delete(self)
