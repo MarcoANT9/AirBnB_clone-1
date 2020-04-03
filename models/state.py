@@ -7,12 +7,14 @@ from models.city import City
 from sqlalchemy.orm import relationship
 from os import getenv
 
+
 class State(BaseModel, Base):
     """This is the class for State
     Attributes:
         name: input name
     """
     __tablename__ = 'states'
+
     name = Column(String(128), nullable=False)
 
     if getenv('HBNB_TYPE_STORAGE') == 'db':
@@ -24,8 +26,9 @@ class State(BaseModel, Base):
             """Return list of City instances with state_id equal to current
             State.id
             """
+            cities = models.engine.all(City)
             list_cities = []
-            for city in models.storage.all(City).values():
-                if self.id == city.state_id:
-                    list_cities.append(city)
+            for key, value in cities.items():
+                if self.id == value.state_id:
+                    list_cities.append(value)
             return list_cities

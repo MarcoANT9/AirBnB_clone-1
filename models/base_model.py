@@ -35,6 +35,10 @@ class BaseModel:
                     setattr(self, key, value)
             if not self.id:
                 self.id = str(uuid.uuid4())
+            if not self.created_at:
+                self.created_at = datetime.now()
+            if not self.updated_at:
+                self.updated_at = datetime.now()
         else:
             self.id = str(uuid.uuid4())
             self.created_at = self.updated_at = datetime.now()
