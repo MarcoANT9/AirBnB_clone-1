@@ -8,9 +8,9 @@ from models.place import Place
 
 class City(BaseModel, Base):
     """This is the class for City
-    Attributes:
-        state_id: The state id
-        name: input name
+        Attributes:
+           state_id: The state id
+           name: input name
     """
     __tablename__ = 'cities'
 

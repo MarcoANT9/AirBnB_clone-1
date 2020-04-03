@@ -44,7 +44,7 @@ class DBStorage():
                 key = '{}.{}'.format(type(obj).__name__, obj.id)
                 my_dict[key] = obj
         else:
-            classes = ['State', 'City', 'User']
+            classes = ['User', 'State', 'City', 'Amenity', 'Place', 'Review']
             for c in classes:
                 objects = self.__session.query(eval(c)).all()
                 for obj in objects:
@@ -56,8 +56,7 @@ class DBStorage():
     def new(self, obj):
         """Add the object to current session.
         """
-        if obj:
-            self.__session.add(obj)
+        self.__session.add(obj)
 
     def save(self):
         """Commit all changes of the current session.

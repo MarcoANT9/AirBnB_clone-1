@@ -58,10 +58,11 @@ class Place(BaseModel, Base):
         def reviews(self):
             """Return list of reviews.
             """
+            list_review = models.engine.all(Review)
             list_reviews = []
-            for review in models.storage.all(Review).values:
-                if self.id == review.place_id:
-                    list_reviews.append(review)
+            for key, value in list_review:
+                if self.id == value.place_id:
+                    list_reviews.append(value)
             return list_reviews
 
         @property
