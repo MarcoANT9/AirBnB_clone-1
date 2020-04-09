@@ -57,3 +57,11 @@ def do_deploy(archive_path):
         return False
     print("\nNew Version Successfuly Deployed!\n")
     return True
+
+def deploy():
+    """Runs do_deploy & do_pack"""
+    NewPath = do_pack()
+    if not NewPath:
+        return False
+    else:
+        return (do_deploy(NewPath))
