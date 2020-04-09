@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# Generates .tgz archive from web_static folder of AirBnB Clone repo, using do_pack().
+# Generates .tgz archive from web_static folder, using do_pack().
 from fabric.api import *
 from datetime import datetime
 import os.path
