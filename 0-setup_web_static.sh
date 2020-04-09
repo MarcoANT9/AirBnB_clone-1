@@ -16,11 +16,11 @@ mkdir -p data/web_static/shared/
 mkdir -p data/web_static/releases/test/
 
 # ------------ Create fake html file -------------------------------- #
-echo -ne "<html>\n<head>\n</head>\n<body>\ntHolberton School\n</body>\n</html>\n" > /data/web_static/releases/test/index.html
+echo -ne "<html>\n<head>\n</head>\n<body>\ntHolberton School\n</body>\n</html>\n" > data/web_static/releases/test/index.html
 
 # ------------ Create simbolic link --------------------------------- #
 
-ln -s -f /data/web_static/releases/test/ /data/web_static/current
+ln -s -f data/web_static/releases/test/ data/web_static/current
 
 # ------------ Change ownership of data folder ---------------------- #
 
