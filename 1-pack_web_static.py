@@ -6,12 +6,17 @@ import os.path
 
 
 def do_pack():
-    """Create a .tgz file with web_static's content."""
-    DateTime = datetime.now().strftime("%Y%m%d%H%M%S")
-    local("mkdir -p versions")
-    File = local('tar -czvf versions/web_static_{}.tgz web_static'
-                   .format(now))
-    if File.failed:
+    """Create a tar gzipped archive of the directory web_static."""
+    DateTime = datetime.utcnow()
+    File = "versions/web_static_{}{}{}{}{}{}.tgz".format(DateTime.year,
+                                                         DateTime.month,
+                                                         DateTime.day,
+                                                         DateTime.hour,
+                                                         DateTime.minute,
+                                                         DateTime.second)
+    if os.path.isdir("versions") is False:
+        if local("mkdir -p versions").failed is True:
+            return None
+    if local("tar -cvzf {} web_static".format(File)).failed is True:
         return None
-    else:
-        return File
+    return File
