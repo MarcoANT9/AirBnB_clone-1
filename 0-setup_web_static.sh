@@ -1,30 +1,24 @@
 #!/usr/bin/env bash
 # This script sets up a web server for deployment of web_static.
 
-if ! which nginx > /dev/null; then
-    sudo apt-get update
-    sudo apt-get -y install nginx
-    ufw allow 'Nginx HTTP'
-fi
+sudo apt-get update
+sudo apt-get -y install nginx
 
 # ------------ Create folders if they don't exist ------------------- #
 
-mkdir -p data/
-mkdir -p data/web_static/
-mkdir -p data/web_static/releases/
-mkdir -p data/web_static/shared/
-mkdir -p data/web_static/releases/test/
+sudo mkdir -p data/web_static/shared/
+sudo mkdir -p data/web_static/releases/test/
 
 # ------------ Create fake html file -------------------------------- #
-echo -ne "<html>\n<head>\n</head>\n<body>\ntHolberton School\n</body>\n</html>\n" > data/web_static/releases/test/index.html
+echo "Hello Holberton" | sudo tee data/web_static/releases/test/index.html
 
 # ------------ Create simbolic link --------------------------------- #
 
-ln -s -f data/web_static/releases/test/ data/web_static/current
+sudo ln -sf data/web_static/releases/test/ data/web_static/current
 
 # ------------ Change ownership of data folder ---------------------- #
 
-chown -R ubuntu:ubuntu data/
+sudo chown -R ubuntu:ubuntu data/
 
 # ------------ Configure nginx ---------------------------------------#
 
@@ -48,4 +42,4 @@ printf %s "server {
 
 }" > /etc/nginx/sites-available/default
 
-service nginx restart
+sudo service nginx restart
