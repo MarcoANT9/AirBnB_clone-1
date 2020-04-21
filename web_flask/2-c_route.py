@@ -20,7 +20,7 @@ def hbnb():
 @app.route('/c/<text>', strict_slashes=False)
 def c_print(text):
     """ Prints the word 'C' and whatever is in the path. """
-    text.replace("_", " ")
+    text = text.replace("_", " ")
     return "C %s" % text
 
 
