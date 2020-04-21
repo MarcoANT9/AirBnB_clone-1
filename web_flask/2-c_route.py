@@ -16,6 +16,7 @@ def hbnb():
     """ Return for this path """
     return "HBNB"
 
+
 @app.route('/c/<text>', strict_slashes=False)
 def c_print(text):
     """ Prints the word 'C' and whatever is in the path. """
