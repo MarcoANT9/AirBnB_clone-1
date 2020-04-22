@@ -13,6 +13,7 @@ def close_db(self):
     """ Closes the database. """
     storage.close()
 
+
 @app.route('/states_list', strict_slashes=False)
 def state_listing():
     """ List all states. """
