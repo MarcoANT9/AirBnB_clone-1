@@ -57,6 +57,12 @@ class FileStorage():
 
     """------------------------------------------------------"""
 
+    def close(self):
+        """ Calls reload for deserializing the JSON files to objects. """
+     self.reload()
+
+    """------------------------------------------------------"""
+
     def delete(self, obj=None):
         """ Deletes an object form the database. """
         if obj is not None:
