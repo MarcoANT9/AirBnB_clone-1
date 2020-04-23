@@ -6,7 +6,7 @@ import models
 from models.city import City
 from sqlalchemy.orm import relationship
 from os import getenv
-
+import os
 
 class State(BaseModel, Base):
     """This is the class for State

@@ -82,3 +82,9 @@ class DBStorage():
         """Call remove() on the private attribute self.__session.
         """
         self.__session.close()
+
+    def reset(self):
+        """Reset session"""
+        self.__session.close()
+        Base.metadata.drop_all(self.__engine)
+        self.reload()

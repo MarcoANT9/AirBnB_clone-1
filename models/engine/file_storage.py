@@ -98,6 +98,14 @@ class FileStorage():
         except FileNotFoundError:
             pass
 
+    def close(self):
+        """call reload() method for deserializing the JSON file to objects"""
+        self.reload()
+
+    def reset(self):
+        """Reset all objects in __objects"""
+        self.__objects = {}
+
     """-----------"""
     """- Private -"""
     """-----------"""
