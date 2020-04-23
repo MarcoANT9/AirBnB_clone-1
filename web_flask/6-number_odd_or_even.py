@@ -41,8 +41,14 @@ def num(n):
 
 @app.route('/number_template/<int:n>')
 def num_template(n):
-    """Returns '/number_template/n'"""
+    """Returns a template with the number in url"""
     return render_template('5-number.html', n=n)
+
+
+@app.route('/number_odd_or_even/<int:n>')
+def odd_or_even(n):
+    """Returns a template with odd or even number"""
+    return render_template('6-number_odd_or_even.html', n=n)
 
 
 if __name__ == '__main__':
