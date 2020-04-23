@@ -3,20 +3,20 @@ from flask import Flask
 app = Flask(__name__)
 
 
-@app.route('/')
-def index():
-    return "Hello HBNB!"
+@app.route('/', strict_slashes=False)
+def hello():
+    return 'Hello HBNB!'
 
 
-@app.route('/hbnb')
+@app.route('/hbnb', strict_slashes=False)
 def hbnb():
-    return "HBNB"
+    return 'HBNB'
 
 
-@app.route('/c/<text>')
-def c(text):
-    return "C {}".format(text)
+@app.route('/c/<var>', strict_slashes=False)
+def c(var):
+    return 'C %s' % var.replace('_', ' ')
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port='5000')
+    app.run(host="0.0.0.0", port="5000")
